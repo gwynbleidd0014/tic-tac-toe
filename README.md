@@ -9,7 +9,7 @@ This is a solution to Odin Projects tic-tac-toe challange.
 - [Overview](#overview)
   - [Screenshot](#screenshot)
   - [Links](#links)
-- [What I've learned](#hey
+- [What I've learned](#hey)
 - [Author](#author)
 
 ## Overview
