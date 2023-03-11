@@ -15,16 +15,7 @@
     <title>Tic-tac-toe</title>
   </head>
   <body>
-    <!-- <div class="choose-mark">
-      <div class="x mark" data-mark="x">X</div>
-      <div class="o mark" data-mark="o">O</div>
-    </div>
-    <div class="choose-mode">
-      <div class="mode" data-mode="multyplayer">Multy player</div>
-      <div class="mode" data-mode="singleplayer">Single player</div>
-    </div>
-    <div class="board" id="board"></div> -->
-    <section id="" class="hidden new-game-screen">
+    <section id="" class="new-game-screen">
       <div class="game-setup">
         <img src="./assets/Logo.svg" alt="Logo" class="logo" />
       <div class="choose-mark">
@@ -70,20 +61,45 @@
         <button class="btn btn-blue mode" data-mode="multyplayer">NEW GAME (VS PLAYER)</button>
       </div>
     </section>
-    <section class="active-game-screen">
+    <section class="active-game-screen hidden">
       <div class="game-wrapper">
         <div class="game-wrapper-header">
           <img src="./assets/Logo.svg" alt="Logo" class="logo">
           <div class="current-player"><img src="./assets/o.svg" alt="player icon" class="current-player-icon"><span>TURN</span></div>
-          <button class="btn btn-gray btn-secondary"><img src="./assets/redu.svg" alt="Redo icon"></button>
+          <button class="btn btn-gray btn-secondary redo"><img src="./assets/redu.svg" alt="Redo icon"></button>
         </div>
         <div id="board"></div>
         <div class="game-wrapper-footer">
-          <div class="score-x score"><span>X</span>14</div>
-          <div class="score-ties score"><span>TIES</span>12</div>
-          <div class="score-o score"><span>O</span>15</div>
+          <div class="score-x score"><span>X</span>0</div>
+          <div class="score-tie score"><span>TIES</span>0</div>
+          <div class="score-o score"><span>O</span>0</div>
         </div>
       </div>
+    </section>
+    <section class="display-winner-screen hidden">
+      <div class="display-winner-box">
+        <p class="notification">notification </p>
+        <div class="winner-info">
+          <img src="./assets/o.svg" alt="Winner mark" class="winner-mark">
+          <p class="winner-announce">TAKES THE ROUND</p>
+        </div>
+        <div class="options-buttons">
+          <button class="btn btn-secondary btn-gray quit">QUIT</button>
+          <button class="btn btn-secondary btn-yellow next-round">NEXT ROUND</button>
+        </div>
+      </div>
+    </section>
+    <section class="redo-screen hidden">
+      <div class="display-winner-box">
+        <div class="winner-info">
+          <p class="winner-announce">Restart Game?</p>
+        </div>
+        <div class="options-buttons">
+          <button class="btn btn-secondary btn-gray cancell">Cancell</button>
+          <button class="btn btn-secondary btn-yellow restart">YES, RESTART</button>
+        </div>
+      </div>
+
     </section>
   </body>
 </html>

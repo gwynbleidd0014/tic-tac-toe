@@ -48,10 +48,6 @@ body {
   min-width: 100vw;
 }
 
-body > .hidden {
-  display: none;
-}
-
 /* STYLING BUTTONS */
 .btn {
   font-size: var(--normal-fs);
@@ -64,6 +60,7 @@ body > .hidden {
   width: 100%;
   border-radius: var(--radius-lg);
   margin-bottom: 5px;
+  white-space: nowrap;
 }
 
 .btn-yellow {
@@ -81,10 +78,17 @@ body > .hidden {
   box-shadow: inset 0 -4px 0 var(--gr-sh-cl);
 }
 
+.btn-gray:hover {
+  background: var(--l-gr-cl);
+}
 .btn-secondary {
   padding: 0.75em;
   width: fit-content;
   border-radius: var(--radius-sm);
+}
+
+.btn-secondary.btn-yellow {
+  box-shadow: inset 0 -4px 0 var(--y-btn-sh-cl);
 }
 
 .btn > img {
@@ -188,41 +192,8 @@ body > .hidden {
 .game-setup .btn-yellow {
   margin-bottom: 1em;
 }
-/*
-#board {
-  width: 50vw;
-  height: 50vh;
-  display: grid;
-  border: 1px solid magenta;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-
-.cell {
-  border: 1px solid green;
-}
-
-.choose-mark,
-.choose-mode {
-  display: flex;
-  width: 50vw;
-  justify-content: center;
-  gap: 3em;
-}
-
-.mark,
-.mode {
-  padding: 1em 1.2em;
-  border: 1px solid magenta;
-}
-
-.mark:hover,
-.mode:hover {
-  cursor: pointer;
-} */
 
 /* STYLING ACTIVE */
-
 .game-wrapper-header {
   display: flex;
   justify-content: space-between;
@@ -258,12 +229,26 @@ body > .hidden {
   background: var(--dr-gr-cl);
   box-shadow: inset 0 -8px 0 var(--dr-sh-cl);
   border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+}
+
+.cell:hover {
+  cursor: pointer;
+}
+
+.mark-in-cell {
+  height: 40px;
+  width: 40px;
+  transform-origin: center;
+  transition: 1s all ease-in;
 }
 
 .game-wrapper-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1em;
 }
 
 .score {
@@ -274,6 +259,7 @@ body > .hidden {
   font-weight: var(--bold-fw);
   color: var(--dr-cl);
   text-align: center;
+  flex: 1;
 }
 
 .score-x {
@@ -288,4 +274,52 @@ body > .hidden {
   display: block;
   font-weight: var(--normal-fw);
   font-size: var(--small-fs);
+}
+
+/* STYLING WINNER DISPLAY */
+
+.display-winner-screen,
+.redo-screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.display-winner-box {
+  background: var(--dr-gr-cl);
+  padding-top: 2.5em;
+  padding-bottom: 3em;
+  width: 100vw;
+}
+
+.notification {
+  color: var(--gr-cl);
+  font-weight: var(--bold-fw);
+  margin-bottom: 1em;
+}
+
+.options-buttons > * {
+  flex: 0;
+}
+
+.winner-info,
+.options-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+}
+
+.winner-info {
+  margin-bottom: 1.5em;
+}
+
+.hidden {
+  display: none;
 }
