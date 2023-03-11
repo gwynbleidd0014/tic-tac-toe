@@ -9,7 +9,7 @@ This is a solution to Odin Projects tic-tac-toe challange.
 - [Overview](#overview)
   - [Screenshot](#screenshot)
   - [Links](#links)
-- [What I've learned](#What I've Learned)
+- [What I've learned](#hey
 - [Author](#author)
 
 ## Overview
@@ -25,7 +25,7 @@ This is a simple tic-tac-toe game.
 [Click to view live site](https://gwynbleidd0014.github.io/tic-tac-toe/)
 
 
-## What I've Learned
+## hey
 In this project I really dived deep in to objects, discovered the beauty of closure and therefor used them in Modules. Used Factory function as well.
 As for html and css nothing speacial here, but overall good practice.
 ## Author
