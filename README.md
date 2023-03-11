@@ -25,7 +25,7 @@ This is a simple tic-tac-toe game.
 [Click to view live site](https://gwynbleidd0014.github.io/tic-tac-toe/)
 
 
-#What I've Learned
+## What I've Learned
 In this project I really dived deep in to objects, discovered the beauty of closure and therefor used them in Modules. Used Factory function as well.
 As for html and css nothing speacial here, but overall good practice.
 ## Author
