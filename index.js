@@ -169,6 +169,16 @@ const flowController = (function () {
   const restart = document.querySelector(".restart");
   const cancell = document.querySelector(".cancell");
   const redoScreen = document.querySelector(".redo-screen");
+  //FUNCTION FOR CPU TO MAKE MOVE
+  const cpuMove = (mark) => {
+    const freeSpots = gameBoard.getFreeSpots();
+    const max = freeSpots.length;
+    const min = 0;
+    const randomIndex = Math.floor(Math.random() * (max - min) + min);
+    gameBoard.updateBoard(mark, freeSpots[randomIndex]);
+    displayTurn();
+    gameBoard.checkForWinner();
+  };
   //Function to display who's trun it's now
   const displayTurn = () => {
     currentPlayerNode.innerHTML = `
@@ -192,6 +202,7 @@ const flowController = (function () {
       multyplayer = mode.dataset.mode === "multyplayer" ? true : false;
       if (!multyplayer) {
         currentPlayer = player1;
+        if (currentPlayer.mark === "o") cpuMove("x");
         cpu = player2;
         newGameView.classList.toggle("hidden");
         activeGameView.classList.toggle("hidden");
@@ -230,7 +241,6 @@ const flowController = (function () {
     winnerAnnounce.textContent = "ROUND TIED";
     winnerAnnounce.style.color = styles.getPropertyValue("--gr-cl").trim();
     winnerMark.classList.add("hidden");
-    player1.ties++;
     winnerScreen.classList.remove("hidden");
   };
   //FUNCTION TO DETERMINE THE WINNER
@@ -258,6 +268,7 @@ const flowController = (function () {
   const resetStats = () => {
     player1 = playerFactory("x");
     player2 = playerFactory("o");
+    proto.ties = 0;
     multyplayer = false;
     currentPlayer = player1;
     cpu = null;
@@ -275,7 +286,6 @@ const flowController = (function () {
     gameBoard.clearGameBoard();
     gameBoard.updateBoard();
     resetStats();
-    console.log(winnerScreen, newGameView);
     winnerScreen.classList.add("hidden");
     activeGameView.classList.add("hidden");
     newGameView.classList.remove("hidden");
@@ -285,6 +295,12 @@ const flowController = (function () {
     gameBoard.clearGameBoard();
     gameBoard.updateBoard();
     updateStats(winnerPlayer ? winnerPlayer.makr : "tie");
+    if (multyplayer) {
+      currentPlayer = player1.mark === "x" ? player1 : player2;
+    } else {
+      cpu = currentPlayer.mark === player1.mark ? player2 : player1;
+    }
+
     winnerScreen.classList.add("hidden");
   };
   //ADD EVENT LISTENER TO QUIT BUTTON
@@ -312,16 +328,7 @@ const flowController = (function () {
   cancell.addEventListener("click", () => {
     redoScreen.classList.add("hidden");
   });
-  //FUNCTION FOR CPU TO MAKE MOVE
-  const cpuMove = (mark) => {
-    const freeSpots = gameBoard.getFreeSpots();
-    const max = freeSpots.length;
-    const min = 0;
-    const randomIndex = Math.floor(Math.random() * (max - min) + min);
-    gameBoard.updateBoard(mark, freeSpots[randomIndex]);
-    displayTurn();
-    gameBoard.checkForWinner();
-  };
+
   //UPDATE EVENT LISTENERS ON NEWLY CREATED CELLS
   const updateEventListeners = () => {
     const cells = document.querySelectorAll(".cell");
@@ -329,7 +336,6 @@ const flowController = (function () {
       cell.addEventListener("click", function (e) {
         if (!cell?.firstChild?.firstChild && cell?.firstChild) return;
         const cond = currentPlayer.makeMove(cell.dataset.index);
-        console.log(cond);
         if (cond) return;
         if (multyplayer) {
           currentPlayer =
