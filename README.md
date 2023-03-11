@@ -14,7 +14,7 @@ This is a solution to Odin Projects tic-tac-toe challange.
 
 ## Overview
 
-This is a simple tic-tac-toe game.
+This is a simple tic-tac-toe game. Design is from frontendmentor.
 
 ### Screenshot
 
